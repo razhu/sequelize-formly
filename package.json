@@ -1,0 +1,16 @@
+{
+  "name": "sequelize-formly",
+  "version": "1.0.0",
+  "description": "Un modulo que hace una REST options del schema de la base de datos en formato formly.",
+  "main": "options.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "sequelize",
+    "formly",
+    "options"
+  ],
+  "author": "Marcelo Arteaga",
+  "license": "MIT"
+}
