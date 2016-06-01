@@ -3,24 +3,25 @@
 Un modulo que hace una REST options del schema de la base de datos en formato formly.
 NOTA: actualmente la funcionalidad es solo con POSTGRES
 
-## Prerequisites
+## Pre-requisitos
 
 Lo siguiente es necesario para utilizar el modulo.
 
     express
     sequelize
 
-## Install
-
+## Instalación
+```
 $ npm install sequelize-formly
+```
 
-## Usage
+## Uso
 
 La definicion de ruta es la siguiente:
 
 ```
 var sequelizeFormly = require('sequelize-formly');
-app.options('/hammers', sequelizeFormly.options(Model));
+app.options('/hammers', sequelizeFormly.formly(Model));
 ```
 
 o
