@@ -51,3 +51,15 @@ Content-Type: application/json
     }
 }
 ```
+
+## LABEL EN SEQUELIZE
+
+Se debe definir en el modelo de sequelize el label para que se muestre en formly 
+```
+Field1: {
+    type: DataType.BLOB,
+    field: 'demo1',
+    allowNull: false,
+    xlabel: "Demo Label 1",
+}
+```
