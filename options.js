@@ -56,7 +56,7 @@ var tipos = {
     }
 };
 
-function formly(modelo) {
+function formly(modelo, app_modelos=[]) {
     return function (req, res, next) {
         modelo.describe().then(function (fields) {
             var xconfig = modelo.rawAttributes;
@@ -64,12 +64,13 @@ function formly(modelo) {
             for (var field in fields) {
                 var dataField = fields[field];
                 var formlyField = {
-                    "key": field,
+                    "key": getXAttribute(xconfig, field, 'fieldName'),
                     "type": tipos[dataField.type].fieldType,
                     "templateOptions": {
                         "type": tipos[dataField.type].templateType,
-                        "label": getXlabel(xconfig, field),
-                        "required": !dataField.allowNull
+                        "label": getXAttribute(xconfig, field, 'xlabel'),
+                        "required": !dataField.allowNull,
+                        //"options": getXChoiceRelation(xconfig, field, app_modelos))
                     }
                 };
                 xformly.push(formlyField);
@@ -80,14 +81,37 @@ function formly(modelo) {
     };
 }
 
-function getXlabel(xconfig, field) {
-    var xfield = field;
-    if(field in xconfig) {
-        if ('xlabel' in xconfig[field]) {
-            xfield = xconfig[field].xlabel;
+function findField(xconfig, fieldDB){
+    for(var ind in xconfig){
+        if(xconfig[ind].field == fieldDB){
+            return xconfig[ind];
         }
     }
+    return [];
+}
+
+function getXAttribute(xconfig, field, attribute) {
+    var xfield = field;
+    var xconfig_find = findField(xconfig, field);
+    if (attribute in xconfig_find) {
+        xfield = xconfig_find[attribute];
+    }
     return xfield;
+}
+
+function getXChoiceRelation(xconfig, field, app_modelos) {
+    var xchoice = [];
+    if(field in xconfig) {
+        if ('references' in xconfig[field]) {
+            rmodel = xconfig[field].references.model;
+            rkey = xconfig[field].references.key;
+            //app_modelos[rmodel].findById(app_modelos[rmodel][rkey])
+
+            //references: { model: 'parametros', key: 'id_parametro' }
+
+        }
+    }
+    return xchoice;
 }
 
 module.exports = {
