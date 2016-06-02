@@ -56,7 +56,8 @@ var tipos = {
     }
 };
 
-function formly(modelo, app_modelos=[]) {
+function formly(modelo, app_modelos) {
+    app_modelos = app_modelos || [];
     return function (req, res, next) {
         modelo.describe().then(function (fields) {
             var xconfig = modelo.rawAttributes;
