@@ -64,3 +64,17 @@ Field1: {
     xlabel: "Demo Label 1",
 }
 ```
+
+## CHOICE FORMLY IN SEQUELIZE
+
+xchoice needs to be defined in each relation field of the model.
+
+```
+Model1.belongsTo(Model2, {as: 'model_relation', foreignKey:{name: 'id_model', allowNull: false, xchoice:'field_name'}});
+```
+
+or concat field
+
+```
+Model1.belongsTo(Model2, {as: 'model_relation', foreignKey:{name: 'id_model', allowNull: false, xchoice:'field_name1+field_name2'}});
+```
