@@ -3,7 +3,7 @@
 A module that produces a REST options for a database schema into a formly format.
 NOTE: this implementation only supports POSTGRESQL at the moment.
 
-## Pre-requisities
+## Prerequisites
 This module requires:
 
     express
