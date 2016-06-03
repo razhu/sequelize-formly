@@ -1,6 +1,6 @@
 # sequelize-formly
 
-A module that produces a REST options for a database schema into a formly format.
+A module that produces a REST options for a database schema in a formly format.
 NOTE: this implementation only supports POSTGRESQL at the moment.
 
 ## Prerequisites
