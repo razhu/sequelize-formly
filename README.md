@@ -1,7 +1,7 @@
 # sequelize-formly
 
 A module that produces a REST options for a database schema into a formly format.
-NOTE: this implementation only supports POSTGRES at the moment.
+NOTE: this implementation only supports POSTGRESQL at the moment.
 
 ## Pre-requisities
 This module requires:
@@ -17,7 +17,7 @@ $ npm install sequelize-formly
 
 ## Usage
 
-Defining the route:
+To define the route, do:
 
 ```
 var sequelizeFormly = require('sequelize-formly');
@@ -54,7 +54,7 @@ Content-Type: application/json
 
 ## LABEL FORMLY IN SEQUELIZE
 
-xlabel needs to be defined in each field of the model.
+xlabel needs to be defined in each model field.
 
 ```
 Field1: {
@@ -67,13 +67,13 @@ Field1: {
 
 ## CHOICE FORMLY IN SEQUELIZE
 
-xchoice needs to be defined in each relation field of the model.
+xchoice needs to be added to belongsto relations in the model.
 
 ```
 Model1.belongsTo(Model2, {as: 'model_relation', foreignKey:{name: 'id_model', allowNull: false, xchoice:'field_name'}});
 ```
 
-or concat field
+or by concatenating fields
 
 ```
 Model1.belongsTo(Model2, {as: 'model_relation', foreignKey:{name: 'id_model', allowNull: false, xchoice:'field_name1+field_name2'}});
