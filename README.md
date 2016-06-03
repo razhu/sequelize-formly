@@ -1,30 +1,30 @@
 # sequelize-formly
 
-Un modulo que hace una REST options del schema de la base de datos en formato formly.
-NOTA: actualmente la funcionalidad es solo con POSTGRES
+A module that produces a REST options for a database schema into a formly format.
+NOTE: this implementation only supports POSTGRES at the moment.
 
-## Pre-requisitos
-
-Lo siguiente es necesario para utilizar el modulo.
+## Pre-requisities
+This module requires:
 
     express
     sequelize
 
-## Instalación
+## Installation
+
 ```
 $ npm install sequelize-formly
 ```
 
-## Uso
+## Usage
 
-La definicion de ruta es la siguiente:
+Defining the route:
 
 ```
 var sequelizeFormly = require('sequelize-formly');
 app.options('/hammers', sequelizeFormly.formly(Model));
 ```
 
-o
+or
 ```
 import sequelizeFormly from "sequelize-formly";
 app.options('/hammers', sequelizeFormly.options(Model));
@@ -32,12 +32,12 @@ app.options('/hammers', sequelizeFormly.options(Model));
 
 ## API
 
-La ejecucion correcta del modulo retorna 201.
+A correct execution returns status 201.
 ```
 app.options('/hammers', sequelizeFormly.options(Model));
 ```
 
-Ejemplo request
+Example request:
 ```
 OPTIONS /hammers
 Content-Type: application/json
@@ -52,9 +52,10 @@ Content-Type: application/json
 }
 ```
 
-## LABEL EN SEQUELIZE
+## LABEL FORMLY IN SEQUELIZE
 
-Se debe definir en el modelo de sequelize el label para que se muestre en formly 
+xlabel needs to be defined in each field of the model.
+
 ```
 Field1: {
     type: DataType.BLOB,
