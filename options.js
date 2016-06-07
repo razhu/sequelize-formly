@@ -127,6 +127,7 @@ function getDescribe(modelo, app_modelos) {
                 for (var i in xformly) {
                     var data = findField2(filters, xformly[i].key);
                     if (data) {
+                        xformly[i].type = "select";
                         xformly[i].templateOptions.options = data.options;
                     }
                 }
