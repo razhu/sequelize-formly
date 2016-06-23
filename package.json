@@ -1,6 +1,6 @@
 {
   "name": "sequelize-formly",
-  "version": "1.0.13",
+  "version": "1.0.14",
   "description": "A module that produces a REST options for a database schema in a formly format.",
   "main": "options.js",
   "scripts": {
