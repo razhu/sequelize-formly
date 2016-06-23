@@ -78,3 +78,15 @@ or by concatenating fields
 ```
 Model1.belongsTo(Model2, {as: 'model_relation', foreignKey:{name: 'id_model', allowNull: false, xchoice:'field_name1+field_name2'}});
 ```
+## ADD CORS
+
+```
+var cors = require('cors');
+app.use(cors({
+        "origin": "*",
+        "methods": "GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS",
+        "preflightContinue": true,
+        "headers": "Content-Type, Authorization, Content-Length, X-Requested-With",
+        "Access-Control-Allow-Headers": "Authorization, Content-Type"
+    }));
+```
