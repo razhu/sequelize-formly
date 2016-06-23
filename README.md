@@ -1,7 +1,7 @@
 # sequelize-formly
 
 A module that produces a REST options for a database schema in a formly format.
-NOTE: this implementation only supports POSTGRESQL at the moment.
+NOTE: Currently, this implementation supports POSTGRESQL only.
 
 ## Prerequisites
 This module requires:
@@ -32,7 +32,7 @@ app.options('/hammers', sequelizeFormly.options(Model));
 
 ## API
 
-A correct execution returns status 201.
+A correct execution returns a 201 status code.
 ```
 app.options('/hammers', sequelizeFormly.options(Model));
 ```
