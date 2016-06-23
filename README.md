@@ -27,14 +27,14 @@ app.options('/hammers', sequelizeFormly.formly(Model));
 or
 ```
 import sequelizeFormly from "sequelize-formly";
-app.options('/hammers', sequelizeFormly.options(Model));
+app.options('/hammers', sequelizeFormly.formly(Model));
 ```
 
 ## API
 
 A correct execution returns a 201 status code.
 ```
-app.options('/hammers', sequelizeFormly.options(Model));
+app.options('/hammers', sequelizeFormly.formly(Model));
 ```
 
 Example request:
