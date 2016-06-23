@@ -59,7 +59,7 @@ var tipos = {
         "templateType": "",
     },
 };
-​
+
 function formlyOld(modelo, app_modelos) {
     var app_modelos = app_modelos || [];
     return function (req, res, next) {
@@ -68,7 +68,7 @@ function formlyOld(modelo, app_modelos) {
             var xformly = [];
             for (var field in fields) {
                 var dataField = fields[field];
-​
+
                 var formlyField = {
                     "key": getXAttribute(xconfig, field, 'fieldName'),
                     "type": tipos[dataField.type].fieldType,
@@ -78,19 +78,19 @@ function formlyOld(modelo, app_modelos) {
                         "required": !dataField.allowNull
                     }
                 };
-​
+
                 getChoises(xconfig, field, app_modelos)
                     .then(function (response) {
                         formlyField.templateOptions.options = response;
                         xformly.push(formlyField);
                     })
-​
+
             }
             res.json(xformly);
         });
     };
 }
-​
+
 function formly(modelo, app_modelos) {
     app_modelos = app_modelos || [];
     return function (req, res, next) {
@@ -102,19 +102,19 @@ function formly(modelo, app_modelos) {
             })
     };
 }
-​
+
 function getDescribe(modelo, app_modelos) {
     return new Promise(function (resolve, reject) {
         modelo.describe().then(function (fields) {
             var xconfig = modelo.rawAttributes;
             var xformly = [];
             var promises = [];
-​
+
             for (var field in fields) {
                 var dataField = fields[field];
-​
+
                 console.log(dataField);
-​
+
                 var formlyField = {
                     "key": getXAttribute(xconfig, field, 'fieldName'),
                     "type": tipos[dataField.type].fieldType,
@@ -135,7 +135,7 @@ function getDescribe(modelo, app_modelos) {
                 promises.push(getChoises(xconfig, field, app_modelos))
                 xformly.push(formlyField);
             }
-​
+
             Promise.all(promises).then(function(values) {
                 var filters = values.filter(function (e) { return e.field != 'empty'});
                 for (var i in xformly) {
@@ -149,12 +149,12 @@ function getDescribe(modelo, app_modelos) {
             }, function(error) {
                 reject('Se produjo un error :P')
             });
-​
+
         });
     });
-​
+
 }
-​
+
 function findField(xconfig, fieldDB){
     for(var i in xconfig){
         if(xconfig[i].field == fieldDB){
@@ -163,7 +163,7 @@ function findField(xconfig, fieldDB){
     }
     return [];
 }
-​
+
 function findField2(xconfig, fieldDB){
     for(var i in xconfig){
         if(xconfig[i].field == fieldDB){
@@ -172,7 +172,7 @@ function findField2(xconfig, fieldDB){
     }
     return null;
 }
-​
+
 function getXAttribute(xconfig, field, attribute) {
     var xfield = field;
     var xconfig_find = findField(xconfig, field);
@@ -181,16 +181,16 @@ function getXAttribute(xconfig, field, attribute) {
     }
     return xfield;
 }
-​
+
 function getXChoiceRelation(xconfig, field, app_modelos) {
     var rchoice = [];
     var xconfig_find = findField(xconfig, field);
     if ('references' in xconfig_find) {
         var rmodel = xconfig_find.references.model;
         var rkey = xconfig_find.references.key;
-​
+
         var xchoice = 'xchoice' in xconfig_find ? xconfig_find.xchoice : "";
-​
+
         var xconfig_rel = app_modelos[rmodel].rawAttributes;
         return app_modelos[rmodel].findAll().then(function(items){
             for(var item in items){
@@ -206,7 +206,7 @@ function getXChoiceRelation(xconfig, field, app_modelos) {
     }
     return rchoice;
 }
-​
+
 function getChoises (xconfig, field, app_modelos) {
     return new Promise(function (resolve, reject) {
         var rchoice = [];
@@ -214,9 +214,9 @@ function getChoises (xconfig, field, app_modelos) {
         if ('references' in xconfig_find) {
             var rmodel = xconfig_find.references.model;
             var rkey = xconfig_find.references.key;
-​
+
             var xchoice = 'xchoice' in xconfig_find ? xconfig_find.xchoice : "";
-​
+
             var xconfig_rel = app_modelos[rmodel].rawAttributes;
             app_modelos[rmodel].findAll().then(function(items){
                 for(var item in items){
@@ -233,8 +233,8 @@ function getChoises (xconfig, field, app_modelos) {
         }
     });
 }
-​
-​
+
+
 function objxcat(obj, parametros){
     var concatenar = "";
     parametros.split("+").forEach(function(item){
@@ -242,7 +242,7 @@ function objxcat(obj, parametros){
     });
     return concatenar.trim();
 }
-​
+
 module.exports = {
     formly: formly
 };
