@@ -60,7 +60,7 @@ var tipos = {
     },
 };
 
-function formlyOld(modelo, app_modelos) {
+/*function formlyOld(modelo, app_modelos) {
     var app_modelos = app_modelos || [];
     return function (req, res, next) {
         modelo.describe().then(function (fields) {
@@ -89,7 +89,7 @@ function formlyOld(modelo, app_modelos) {
             res.json(xformly);
         });
     };
-}
+}*/
 
 function formly(modelo, app_modelos) {
     app_modelos = app_modelos || [];
@@ -113,7 +113,7 @@ function getDescribe(modelo, app_modelos) {
             for (var field in fields) {
                 var dataField = fields[field];
 
-                console.log(dataField);
+                //console.log(dataField);
 
                 var formlyField = {
                     "key": getXAttribute(xconfig, field, 'fieldName'),
@@ -129,7 +129,7 @@ function getDescribe(modelo, app_modelos) {
                     for (var dopt in dataField.special){
                         ud_options.push({"name":dataField.special[dopt], "value":dataField.special[dopt]});
                     }
-                    console.log(ud_options);
+                    //console.log(ud_options);
                     formlyField.templateOptions.options = ud_options;
                 }
                 promises.push(getChoises(xconfig, field, app_modelos))
@@ -147,6 +147,7 @@ function getDescribe(modelo, app_modelos) {
                 }
                 resolve(xformly);
             }, function(error) {
+                console.log(error);
                 reject('Se produjo un error :P')
             });
 
@@ -182,7 +183,7 @@ function getXAttribute(xconfig, field, attribute) {
     return xfield;
 }
 
-function getXChoiceRelation(xconfig, field, app_modelos) {
+/*function getXChoiceRelation(xconfig, field, app_modelos) {
     var rchoice = [];
     var xconfig_find = findField(xconfig, field);
     if ('references' in xconfig_find) {
@@ -191,21 +192,23 @@ function getXChoiceRelation(xconfig, field, app_modelos) {
 
         var xchoice = 'xchoice' in xconfig_find ? xconfig_find.xchoice : "";
 
-        var xconfig_rel = app_modelos[rmodel].rawAttributes;
-        return app_modelos[rmodel].findAll().then(function(items){
-            for(var item in items){
-                var xconfig_rkey = findField(xconfig_rel, rkey);
-                //console.log(xconfig_rkey.fieldName);
-                rchoice.push({
-                    "name": objxcat(items[item], xchoice),
-                    "value": items[item][xconfig_rkey.fieldName]
-                });
-            }
-            return rchoice;
-        });
+        if ('rawAttributes' in app_modelos[rmodel]) {
+            var xconfig_rel = app_modelos[rmodel].rawAttributes;
+            return app_modelos[rmodel].findAll().then(function(items){
+                for(var item in items){
+                    var xconfig_rkey = findField(xconfig_rel, rkey);
+                    //console.log(xconfig_rkey.fieldName);
+                    rchoice.push({
+                        "name": objxcat(items[item], xchoice),
+                        "value": items[item][xconfig_rkey.fieldName]
+                    });
+                }
+                return rchoice;
+            });
+        }
     }
     return rchoice;
-}
+}*/
 
 function getChoises (xconfig, field, app_modelos) {
     return new Promise(function (resolve, reject) {
@@ -214,14 +217,19 @@ function getChoises (xconfig, field, app_modelos) {
         if ('references' in xconfig_find) {
             var rmodel = xconfig_find.references.model;
             var rkey = xconfig_find.references.key;
-
             var xchoice = 'xchoice' in xconfig_find ? xconfig_find.xchoice : "";
-
+            if(xchoice == "" && 'references' in xconfig_find){
+                var xchoice = 'xchoice' in xconfig_find.references ? xconfig_find.references.xchoice : "";
+            }
+            //console.log("******************************>", xchoice);
+            //datos de
             var xconfig_rel = app_modelos[rmodel].rawAttributes;
+
             app_modelos[rmodel].findAll().then(function(items){
                 for(var item in items){
                     var xconfig_rkey = findField(xconfig_rel, rkey);
                     rchoice.push({
+                        //"name": objxcat(items[item], xchoice.references.xchoice),
                         "name": objxcat(items[item], xchoice),
                         "value": items[item][xconfig_rkey.fieldName]
                     });
