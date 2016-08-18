@@ -223,9 +223,9 @@ function getChoises (xconfig, field, app_modelos) {
             }
             //console.log("******************************>", xchoice);
             //datos de
-            var xconfig_rel = app_modelos[rmodel].rawAttributes;
+            var xconfig_rel = app_modelos[rmodel.tableName || rmodel].rawAttributes;//var xconfig_rel = app_modelos[rmodel].rawAttributes; //
 
-            app_modelos[rmodel].findAll().then(function(items){
+            app_modelos[rmodel.tableName || rmodel].findAll().then(function(items){//app_modelos[rmodel].findAll().then(function(items){
                 for(var item in items){
                     var xconfig_rkey = findField(xconfig_rel, rkey);
                     rchoice.push({
