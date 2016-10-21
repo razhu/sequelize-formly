@@ -50,6 +50,11 @@ var tipos = {
         "fieldType": "datepicker",
         "templateType": "date",
     },
+    "JSON":{//JSON
+        //"fieldType": "input",
+        "fieldType": "textarea",
+        "templateType": "",
+    },
     "BYTEA":{//BLOB
         "fieldType": "textarea",
         "templateType": "",
@@ -109,7 +114,6 @@ function getDescribe(modelo, app_modelos) {
             var xconfig = modelo.rawAttributes;
             var xformly = [];
             var promises = [];
-
             for (var field in fields) {
                 var dataField = fields[field];
 
