@@ -63,6 +63,10 @@ var tipos = {
         "fieldType": "select",
         "templateType": "",
     },
+    "ARRAY":{//ARRAY
+        "fieldType": "select",
+        "templateType": "",
+    },
 };
 
 /*function formlyOld(modelo, app_modelos) {
