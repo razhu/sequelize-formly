@@ -39,7 +39,7 @@
 21 silly publish   license: 'MIT',
 21 silly publish   readme: '# sequelize-formly\n\nA module that produces a REST options for a database schema in a formly format.\nNOTE: Currently, this implementation supports POSTGRESQL only.\n\n## Prerequisites\nThis module requires:\n\n    express\n    sequelize\n\n## Installation\n\n```\n$ npm install sequelize-formly\n```\n\n## Usage\n\nTo define the route, do:\n\n```\nvar sequelizeFormly = require(\'sequelize-formly\');\napp.options(\'/hammers\', sequelizeFormly.formly(Model));\n```\n\nor\n```\nimport sequelizeFormly from "sequelize-formly";\napp.options(\'/hammers\', sequelizeFormly.formly(Model));\n```\n\n## API\n\nA correct execution returns a 201 status code.\n```\napp.options(\'/hammers\', sequelizeFormly.formly(Model));\n```\n\nExample request:\n```\nOPTIONS /hammers\nContent-Type: application/json\n{\n    "key": "hammers",\n    "type": "input",\n    "templateOptions": {\n      "type": "number",\n      "label": "hammers",\n      "required": true\n    }\n}\n```\n\n## LABEL FORMLY IN SEQUELIZE\n\nxlabel needs to be defined in each model field.\n\n```\nField1: {\n    type: DataType.BLOB,\n    field: \'demo1\',\n    allowNull: false,\n    xlabel: "Demo Label 1",\n}\n```\n\n## CHOICE FORMLY IN SEQUELIZE\n\nxchoice needs to be added to belongsto relations in the model.\n\n```\nModel1.belongsTo(Model2, {as: \'model_relation\', foreignKey:{name: \'id_model\', allowNull: false, xchoice:\'field_name\'}});\n```\n\nor by concatenating fields\n\n```\nModel1.belongsTo(Model2, {as: \'model_relation\', foreignKey:{name: \'id_model\', allowNull: false, xchoice:\'field_name1+field_name2\'}});\n```\n## ADD CORS\n\n```\nvar cors = require(\'cors\');\napp.use(cors({\n        "origin": "*",\n        "methods": "GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS",\n        "preflightContinue": true,\n        "headers": "Content-Type, Authorization, Content-Length, X-Requested-With",\n        "Access-Control-Allow-Headers": "Authorization, Content-Type"\n    }));\n```',
 21 silly publish   readmeFilename: 'README.md',
-21 silly publish   gitHead: '21b086caf3640bbfe9faa6ec54d01ef362ab2be7',
+21 silly publish   gitHead: '98bac70879f091fd9b283152d1f51bee4318a797',
 21 silly publish   _id: 'sequelize-formly@1.0.21',
 21 silly publish   _shasum: 'd808bdd24298ba9dc89bd693450578ae86d9f330',
 21 silly publish   _from: '.' }
@@ -60,22 +60,22 @@
 29 silly publish uploading /home/ramiro/.npm/sequelize-formly/1.0.21/package.tgz
 30 verbose request uri https://registry.npmjs.org/sequelize-formly
 31 verbose request sending authorization for write operation
-32 info attempt registry request try #1 at 9:02:50 AM
+32 info attempt registry request try #1 at 9:04:24 AM
 33 verbose request using bearer token for auth
-34 verbose request id 91cf524c671db5a1
+34 verbose request id 4d51cd97e04d754c
 35 http request PUT https://registry.npmjs.org/sequelize-formly
 36 http 403 https://registry.npmjs.org/sequelize-formly
 37 verbose headers { 'content-type': 'application/json',
 37 verbose headers   'cache-control': 'max-age=300',
 37 verbose headers   'content-length': '96',
 37 verbose headers   'accept-ranges': 'bytes',
-37 verbose headers   date: 'Thu, 17 Aug 2017 13:02:53 GMT',
+37 verbose headers   date: 'Thu, 17 Aug 2017 13:04:26 GMT',
 37 verbose headers   via: '1.1 varnish',
 37 verbose headers   connection: 'keep-alive',
-37 verbose headers   'x-served-by': 'cache-mia1327-MIA',
+37 verbose headers   'x-served-by': 'cache-mia1324-MIA',
 37 verbose headers   'x-cache': 'MISS',
 37 verbose headers   'x-cache-hits': '0',
-37 verbose headers   'x-timer': 'S1502974973.802606,VS0,VE808',
+37 verbose headers   'x-timer': 'S1502975066.626487,VS0,VE747',
 37 verbose headers   vary: 'Accept-Encoding, Accept' }
 38 verbose request invalidating /home/ramiro/.npm/registry.npmjs.org/sequelize-formly on PUT
 39 error publish Failed PUT 403
