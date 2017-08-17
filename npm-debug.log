@@ -1,0 +1,104 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/home/ramiro/.nvm/versions/node/v6.10.1/bin/node',
+1 verbose cli   '/home/ramiro/.nvm/versions/node/v6.10.1/bin/npm',
+1 verbose cli   'publish' ]
+2 info using npm@3.10.10
+3 info using node@v6.10.1
+4 verbose publish [ '.' ]
+5 silly cache add args [ '.', null ]
+6 verbose cache add spec .
+7 silly cache add parsed spec Result {
+7 silly cache add   raw: '.',
+7 silly cache add   scope: null,
+7 silly cache add   escapedName: null,
+7 silly cache add   name: null,
+7 silly cache add   rawSpec: '.',
+7 silly cache add   spec: '/home/ramiro/Documents/myprojects/nodethings/sequelize-formly',
+7 silly cache add   type: 'directory' }
+8 verbose addLocalDirectory /home/ramiro/.npm/sequelize-formly/1.0.21/package.tgz not in flight; packing
+9 verbose correctMkdir /home/ramiro/.npm correctMkdir not in flight; initializing
+10 info lifecycle sequelize-formly@1.0.21~prepublish: sequelize-formly@1.0.21
+11 silly lifecycle sequelize-formly@1.0.21~prepublish: no script for prepublish, continuing
+12 verbose tar pack [ '/home/ramiro/.npm/sequelize-formly/1.0.21/package.tgz',
+12 verbose tar pack   '/home/ramiro/Documents/myprojects/nodethings/sequelize-formly' ]
+13 verbose tarball /home/ramiro/.npm/sequelize-formly/1.0.21/package.tgz
+14 verbose folder /home/ramiro/Documents/myprojects/nodethings/sequelize-formly
+15 verbose addLocalTarball adding from inside cache /home/ramiro/.npm/sequelize-formly/1.0.21/package.tgz
+16 verbose correctMkdir /home/ramiro/.npm correctMkdir not in flight; initializing
+17 silly cache afterAdd sequelize-formly@1.0.21
+18 verbose afterAdd /home/ramiro/.npm/sequelize-formly/1.0.21/package/package.json not in flight; writing
+19 verbose correctMkdir /home/ramiro/.npm correctMkdir not in flight; initializing
+20 verbose afterAdd /home/ramiro/.npm/sequelize-formly/1.0.21/package/package.json written
+21 silly publish { name: 'sequelize-formly',
+21 silly publish   version: '1.0.21',
+21 silly publish   description: 'A module that produces a REST options for a database schema in a formly format.',
+21 silly publish   main: 'options.js',
+21 silly publish   scripts: { test: 'echo "Error: no test specified" && exit 1' },
+21 silly publish   keywords: [ 'sequelize', 'formly', 'options' ],
+21 silly publish   author: { name: 'Marcelo Arteaga' },
+21 silly publish   license: 'MIT',
+21 silly publish   readme: '# sequelize-formly\n\nA module that produces a REST options for a database schema in a formly format.\nNOTE: Currently, this implementation supports POSTGRESQL only.\n\n## Prerequisites\nThis module requires:\n\n    express\n    sequelize\n\n## Installation\n\n```\n$ npm install sequelize-formly\n```\n\n## Usage\n\nTo define the route, do:\n\n```\nvar sequelizeFormly = require(\'sequelize-formly\');\napp.options(\'/hammers\', sequelizeFormly.formly(Model));\n```\n\nor\n```\nimport sequelizeFormly from "sequelize-formly";\napp.options(\'/hammers\', sequelizeFormly.formly(Model));\n```\n\n## API\n\nA correct execution returns a 201 status code.\n```\napp.options(\'/hammers\', sequelizeFormly.formly(Model));\n```\n\nExample request:\n```\nOPTIONS /hammers\nContent-Type: application/json\n{\n    "key": "hammers",\n    "type": "input",\n    "templateOptions": {\n      "type": "number",\n      "label": "hammers",\n      "required": true\n    }\n}\n```\n\n## LABEL FORMLY IN SEQUELIZE\n\nxlabel needs to be defined in each model field.\n\n```\nField1: {\n    type: DataType.BLOB,\n    field: \'demo1\',\n    allowNull: false,\n    xlabel: "Demo Label 1",\n}\n```\n\n## CHOICE FORMLY IN SEQUELIZE\n\nxchoice needs to be added to belongsto relations in the model.\n\n```\nModel1.belongsTo(Model2, {as: \'model_relation\', foreignKey:{name: \'id_model\', allowNull: false, xchoice:\'field_name\'}});\n```\n\nor by concatenating fields\n\n```\nModel1.belongsTo(Model2, {as: \'model_relation\', foreignKey:{name: \'id_model\', allowNull: false, xchoice:\'field_name1+field_name2\'}});\n```\n## ADD CORS\n\n```\nvar cors = require(\'cors\');\napp.use(cors({\n        "origin": "*",\n        "methods": "GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS",\n        "preflightContinue": true,\n        "headers": "Content-Type, Authorization, Content-Length, X-Requested-With",\n        "Access-Control-Allow-Headers": "Authorization, Content-Type"\n    }));\n```',
+21 silly publish   readmeFilename: 'README.md',
+21 silly publish   gitHead: '21b086caf3640bbfe9faa6ec54d01ef362ab2be7',
+21 silly publish   _id: 'sequelize-formly@1.0.21',
+21 silly publish   _shasum: 'd808bdd24298ba9dc89bd693450578ae86d9f330',
+21 silly publish   _from: '.' }
+22 verbose getPublishConfig undefined
+23 silly mapToRegistry name sequelize-formly
+24 silly mapToRegistry using default registry
+25 silly mapToRegistry registry https://registry.npmjs.org/
+26 silly mapToRegistry data Result {
+26 silly mapToRegistry   raw: 'sequelize-formly',
+26 silly mapToRegistry   scope: null,
+26 silly mapToRegistry   escapedName: 'sequelize-formly',
+26 silly mapToRegistry   name: 'sequelize-formly',
+26 silly mapToRegistry   rawSpec: '',
+26 silly mapToRegistry   spec: 'latest',
+26 silly mapToRegistry   type: 'tag' }
+27 silly mapToRegistry uri https://registry.npmjs.org/sequelize-formly
+28 verbose publish registryBase https://registry.npmjs.org/
+29 silly publish uploading /home/ramiro/.npm/sequelize-formly/1.0.21/package.tgz
+30 verbose request uri https://registry.npmjs.org/sequelize-formly
+31 verbose request sending authorization for write operation
+32 info attempt registry request try #1 at 9:02:50 AM
+33 verbose request using bearer token for auth
+34 verbose request id 91cf524c671db5a1
+35 http request PUT https://registry.npmjs.org/sequelize-formly
+36 http 403 https://registry.npmjs.org/sequelize-formly
+37 verbose headers { 'content-type': 'application/json',
+37 verbose headers   'cache-control': 'max-age=300',
+37 verbose headers   'content-length': '96',
+37 verbose headers   'accept-ranges': 'bytes',
+37 verbose headers   date: 'Thu, 17 Aug 2017 13:02:53 GMT',
+37 verbose headers   via: '1.1 varnish',
+37 verbose headers   connection: 'keep-alive',
+37 verbose headers   'x-served-by': 'cache-mia1327-MIA',
+37 verbose headers   'x-cache': 'MISS',
+37 verbose headers   'x-cache-hits': '0',
+37 verbose headers   'x-timer': 'S1502974973.802606,VS0,VE808',
+37 verbose headers   vary: 'Accept-Encoding, Accept' }
+38 verbose request invalidating /home/ramiro/.npm/registry.npmjs.org/sequelize-formly on PUT
+39 error publish Failed PUT 403
+40 verbose stack Error: "You cannot publish over the previously published version 1.0.21." : sequelize-formly
+40 verbose stack     at makeError (/home/ramiro/.nvm/versions/node/v6.10.1/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:302:12)
+40 verbose stack     at CachingRegistryClient.<anonymous> (/home/ramiro/.nvm/versions/node/v6.10.1/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:290:14)
+40 verbose stack     at Request._callback (/home/ramiro/.nvm/versions/node/v6.10.1/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:210:14)
+40 verbose stack     at Request.self.callback (/home/ramiro/.nvm/versions/node/v6.10.1/lib/node_modules/npm/node_modules/request/request.js:187:22)
+40 verbose stack     at emitTwo (events.js:106:13)
+40 verbose stack     at Request.emit (events.js:191:7)
+40 verbose stack     at Request.<anonymous> (/home/ramiro/.nvm/versions/node/v6.10.1/lib/node_modules/npm/node_modules/request/request.js:1048:10)
+40 verbose stack     at emitOne (events.js:96:13)
+40 verbose stack     at Request.emit (events.js:188:7)
+40 verbose stack     at IncomingMessage.<anonymous> (/home/ramiro/.nvm/versions/node/v6.10.1/lib/node_modules/npm/node_modules/request/request.js:969:12)
+41 verbose statusCode 403
+42 verbose pkgid sequelize-formly
+43 verbose cwd /home/ramiro/Documents/myprojects/nodethings/sequelize-formly
+44 error Linux 3.19.0-47-generic
+45 error argv "/home/ramiro/.nvm/versions/node/v6.10.1/bin/node" "/home/ramiro/.nvm/versions/node/v6.10.1/bin/npm" "publish"
+46 error node v6.10.1
+47 error npm  v3.10.10
+48 error code E403
+49 error "You cannot publish over the previously published version 1.0.21." : sequelize-formly
+50 error If you need help, you may report this error at:
+50 error     <https://github.com/npm/npm/issues>
+51 verbose exit [ 1, true ]
