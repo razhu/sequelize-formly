@@ -55,6 +55,11 @@ var tipos = {
         "fieldType": "textarea",
         "templateType": "",
     },
+    "JSONB":{//JSONB
+        //"fieldType": "input",
+        "fieldType": "textarea",
+        "templateType": "",
+    },
     "BYTEA":{//BLOB
         "fieldType": "textarea",
         "templateType": "",
