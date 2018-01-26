@@ -72,6 +72,10 @@ var tipos = {
         "fieldType": "select",
         "templateType": "",
     },
+    "UUID":{//CHAR
+        "fieldType": "input",
+        "templateType": "text",
+    }    
 };
 
 /*function formlyOld(modelo, app_modelos) {
