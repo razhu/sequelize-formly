@@ -131,7 +131,7 @@ function getDescribe(modelo, app_modelos) {
                 var dataField = fields[field];
 
                 //console.log(dataField);
-
+                dataField.type = dataField.type.split('(')[0];
                 var formlyField = {
                     "key": getXAttribute(xconfig, field, 'fieldName'),
                     "type": tipos[dataField.type].fieldType,
