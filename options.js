@@ -75,7 +75,11 @@ var tipos = {
     "UUID":{//CHAR
         "fieldType": "input",
         "templateType": "text",
-    }    
+    },
+    "TSVECTOR":{//TSVECTOR
+        "fieldType": "input",
+        "templateType": "text",
+    }        
 };
 
 /*function formlyOld(modelo, app_modelos) {
